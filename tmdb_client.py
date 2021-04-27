@@ -17,16 +17,16 @@ def get_poster_url(poster_path, size = "w342"):
 def get_movie_info(movie):
     return {"title": movie["title"], "source": movie["poster_path"]}
 
-def get_popular_movies():
-    endpoint = "https://api.themoviedb.org/3/movie/popular"
+def get_popular_movies(list_type):
+    endpoint = f"https://api.themoviedb.org/3/movie/{list_type}"
     headers = {
         "Authorization": f"Bearer {API_TOKEN}"
     }
-    response = requests.get(endpoint, headers=headers)
+    response = requests.get(endpoint, headers = headers)
     return response.json()
 
 def get_movies(how_many, list_type = "popular"):
-    data = get_popular_movies()
+    data = get_popular_movies(list_type)
     return data["results"][:how_many]
 
 def get_single_movie(movie_id):
