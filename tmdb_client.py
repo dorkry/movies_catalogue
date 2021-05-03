@@ -26,6 +26,7 @@ def get_popular_movies(list_type):
     return response.json()
 
 def get_movies(how_many, list_type = "popular"):
+    print("get list: ", list_type)
     data = get_popular_movies(list_type)
     return data["results"][:how_many]
 
@@ -45,3 +46,5 @@ def get_single_movie_cast(movie_id):
     response = requests.get(endpoint, headers=headers)
     return response.json()["cast"]
 
+def get_list_types():
+    return ['now_playing' , 'popular', 'top_rated', 'upcoming']

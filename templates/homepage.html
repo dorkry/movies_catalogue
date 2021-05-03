@@ -7,10 +7,13 @@
         <p class="lead">Znajdziesz tutaj tylko najlepsze tytuły!</p>
     </div>
     <div class="col-lg-12 mb-4">
-        <a href="{{ url_for('homepage', list_type="top_rated") }}" class="btn btn-outline-info">Top rated</a>
-        <a href="{{ url_for('homepage', list_type="now_playing") }}" class="btn btn-outline-info">Now Playing</a>
-        <a href="{{ url_for('homepage', list_type="upcoming") }}" class="btn btn-outline-info">Upcoming</a>
-        <a href="{{ url_for('homepage', list_type="popular") }}" class="btn btn-outline-info">Popular</a>
+        {% for i in list_types %}
+            {% if i == current_list %}
+                <a href="{{ url_for('homepage', list_type=i) }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" data-toggle="button">{{i}}</a>
+            {% else %}
+                <a href="{{ url_for('homepage', list_type=i) }}" class="btn btn-outline-info" role="button" aria-pressed="true" data-toggle="button">{{i}}</a>
+            {% endif %}
+        {% endfor %}
     </div>
     {% for movie in movies %}
     <div class="col-lg-3 col-md-6 mb-4">
