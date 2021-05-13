@@ -48,3 +48,4 @@ def get_single_movie_cast(movie_id):
 
 def get_list_types():
     return ['now_playing' , 'popular', 'top_rated', 'upcoming']
+
